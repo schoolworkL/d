@@ -63,8 +63,8 @@ def run(info):
 
 # holds the search functionality of the program
 class Friend:
-    global info
-    lst = info
+    global info  # allows the class to access the sorted list of data
+    lst = info  # sets the list of data to be a variable in the class
 
     # recursive binary search algorithm
     # @param lst - holds the sorted list of data
