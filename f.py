@@ -31,11 +31,11 @@ def read_in():
 # takes an input to search for in the list of names
 # @param data - the list of sorted data
 # @return - returns the result of the search to the run(info) function
-def search(data):
+def search():
     while True:
         try:
             name = str(input("\nSearch by Last Name: "))  # takes a name input to search for
-            return Friend.binary_search(data, 0, len(info) - 1,
+            return Friend.binary_search(0, len(info) - 1,
                                         name)  # returns the result of the search to the run(info) function
         except:
             print("Invalid Input!")  # error message
@@ -57,12 +57,15 @@ def end_result(data, num):
 # @param info - holds the list of sorted data
 def run(info):
     while True:
-        result = search(info)
+        result = search()
         end_result(info, result)
 
 
 # holds the search functionality of the program
 class Friend:
+    global info
+    lst = info
+
     # recursive binary search algorithm
     # @param lst - holds the sorted list of data
     # @param low - holds the start value of the list
@@ -72,17 +75,18 @@ class Friend:
     # @return return Friend.binary_search(lst, low, mid - 1, term) - returns the binary search function with a new high
     # @return Friend.binary_search(lst, mid + 1, high, term) - returns the binary search function with a new low
     # @return -1 - returns value of -1 to the search(data) function
-    def binary_search(lst, low, high, term):
+    def binary_search(low, high, term):
         if high >= low:  # checks if the upper range of the list is greater than the lower range of the list
             mid = (high + low) // 2  # stores the index value of the middle value
-            if str(lst[mid][1].casefold()) == term.casefold():  # checks if the middle value is equal to the search term
+            if str(Friend.lst[mid][
+                       1].casefold()) == term.casefold():  # checks if the middle value is equal to the search term
                 return mid  # returns the mid index to the search(data) function
-            elif str(info[mid][1].casefold()) > term.casefold():  # checks if the middle value is greater than the
+            elif str(Friend.lst[mid][1].casefold()) > term.casefold():  # checks if the middle value is greater than the
                 # search term
-                return Friend.binary_search(lst, low, mid - 1, term)  # returns the binary search function with a new
+                return Friend.binary_search(low, mid - 1, term)  # returns the binary search function with a new
                 # upper bound
             else:
-                return Friend.binary_search(lst, mid + 1, high, term)  # returns the binary_search function with a
+                return Friend.binary_search(mid + 1, high, term)  # returns the binary_search function with a
                 # new lower bound
         else:
             return -1  # returns a value of -1 to indicate no value found
