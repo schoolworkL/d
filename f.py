@@ -68,20 +68,19 @@ class Friend:
     # recursive binary search algorithm
     # @param lst - holds the sorted list of data
     # @param low - holds the start value of the list
-    # @param high - hol
-    # @param term - stores the value of the search terms the end value of the list
+    # @param high - holds the end value of the list
+    # @param term - stores the value of the search term
     # @return mid - returns the mid to the search(data) function
     # @return return Friend.binary_search(lst, low, mid - 1, term) - returns the binary search function with a new high
     # @return Friend.binary_search(lst, mid + 1, high, term) - returns the binary search function with a new low
     # @return -1 - returns value of -1 to the search(data) function
     def binary_search(low, high, term):
-        lst = info  # sets the list of data to be a variable in the class
         if high >= low:  # checks if the upper range of the list is greater than the lower range of the list
             mid = (high + low) // 2  # stores the index value of the middle value
-            if str(Friend.lst[mid][
+            if str(info[mid][
                        1].casefold()) == term.casefold():  # checks if the middle value is equal to the search term
                 return mid  # returns the mid index to the search(data) function
-            elif str(Friend.lst[mid][1].casefold()) > term.casefold():  # checks if the middle value is greater than the
+            elif str(info[mid][1].casefold()) > term.casefold():  # checks if the middle value is greater than the
                 # search term
                 return Friend.binary_search(low, mid - 1, term)  # returns the binary search function with a new
                 # upper bound
