@@ -29,7 +29,6 @@ def read_in():
 
 
 # takes an input to search for in the list of names
-# @param data - the list of sorted data
 # @return - returns the result of the search to the run(info) function
 def search():
     while True:
